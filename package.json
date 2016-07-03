@@ -1,0 +1,33 @@
+{
+  "name": "repack",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jjwong0915/repack.git"
+  },
+  "keywords": [
+    "react",
+    "webpack"
+  ],
+  "author": "JJ Wong <jjwong0915@gmail.com> (https://github.com/jjwong0915/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jjwong0915/repack/issues"
+  },
+  "homepage": "https://github.com/jjwong0915/repack#readme",
+  "dependencies": {
+    "babel-core": "^6.10.4",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.11.1",
+    "commander": "^2.9.0",
+    "react": "^15.2.0",
+    "react-dom": "^15.2.0",
+    "webpack": "^1.13.1"
+  }
+}
