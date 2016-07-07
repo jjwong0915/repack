@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "React developing tool built with Webpack.",
   "main": "index.js",
-  "bin": "./lib/cli.js",
+  "bin": "./bin/repack.js",
   "scripts": {
     "test": "mocha"
   },

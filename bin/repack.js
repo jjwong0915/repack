@@ -2,32 +2,36 @@
 
 'use strict';
 
+var path = require('path');
 var program = require('commander');
-var repack = require('./repack.js');
+var repack = require('../lib/repack.js');
 var execFile = require('child_process').execFile;
 
-var options = {};
+var entryFile = '';
+var outputFile = '';
 
 program.version('0.0.1')
 .description('React developing tool built with Webpack.')
 .arguments('<entry> <output>')
+.action((entry, output) => {
+    entryFile = entry;
+    outputFile = output;
+})
 .option('-p, --production', 'remove sourcemap and minimize your scripts')
 .option('-v, --verbose', 'output all the information webpack has')
 .option('-w, --watch', 'watches all dependencies and recompile on change')
-.action((entry, output, program) => {
-    options.entry = entry;
-    options.output = output;
-    options.production = program.production;
-    options.program = !program.watch;
-}).parse(process.argv);
+.parse(process.argv);
 
-if(!options.entry || !options.output) {
+if(!entryFile || !outputFile) {
     console.error('error: missing required arguments');
-    execFile(__filename, ['--help'], (err, stdout) => {
-        if(err) console.error(err);
-        else console.log(stdout);
-    });
+    console.log(program.commandHelp());
 } else {
+    var options = {
+        entry: path.resolve(entryFile),
+        output: path.resolve(outputFile),
+        production: program.production,
+        progress: !program.watch
+    };
     var compiler = repack(options);
     var logging = program.verbose ? 'verbose' : '';
     if(!program.watch) {
@@ -46,5 +50,7 @@ if(!options.entry || !options.output) {
         });
     }
 }
+
+
 
 

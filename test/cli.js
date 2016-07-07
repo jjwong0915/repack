@@ -5,7 +5,7 @@ var assert = require('chai').assert;
 var execFile = require('child_process').execFile;
 
 describe('CLI', () => {
-    var cli = resolve(__dirname, '..', 'lib', 'cli.js')
+    var cli = resolve(__dirname, '..', 'bin', 'repack.js');
     describe('repack', () => {
         it('should output error when no arguments', (done) => {
             execFile(cli, (err, stdout, stderr) => {
@@ -15,7 +15,7 @@ describe('CLI', () => {
             });
         });
         it('should output usage with "-h"', (done) => {
-            execFile(cli, (err, stdout) => {
+            execFile(cli, ['-h'], (err, stdout) => {
                 if(err) throw err;
                 assert.include(stdout, 'Usage');
                 done();
