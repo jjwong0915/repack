@@ -11,13 +11,13 @@ var entryFile = '';
 var outputFile = '';
 
 program.version('0.0.1')
-.description('React developing tool built with Webpack.')
+.description('An easy tool compiles and bundles your React app.')
 .arguments('<entry> <output>')
 .action((entry, output) => {
     entryFile = entry;
     outputFile = output;
 })
-.option('-p, --production', 'remove sourcemap and minimize your scripts')
+.option('-p, --production', 'remove sourcemaps and minimize your scripts')
 .option('-v, --verbose', 'output all the information webpack has')
 .option('-w, --watch', 'watches all dependencies and recompile on change')
 .parse(process.argv);
@@ -30,7 +30,6 @@ if(!entryFile || !outputFile) {
         entry: path.resolve(entryFile),
         output: path.resolve(outputFile),
         production: program.production,
-        progress: !program.watch
     };
     var compiler = repack(options);
     var logging = program.verbose ? 'verbose' : '';
@@ -50,6 +49,9 @@ if(!entryFile || !outputFile) {
         });
     }
 }
+
+module.exports = program;
+
 
 
 

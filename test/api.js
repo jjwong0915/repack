@@ -5,7 +5,7 @@ var repack = require('../lib/repack.js');
 
 describe('Node.js API', () => {
     describe('repack(config)', () => {
-        var compiler = repack();
+        var compiler = repack({});
         describe('.run()', () => {
             it('should return a Promise', () => {
                 var result = compiler.run();
